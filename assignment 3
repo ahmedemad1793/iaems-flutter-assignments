@@ -1,0 +1,126 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+void main() {
+  runApp(ProfileApp());
+}
+
+class ProfileApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Profile Page Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ProfilePage(),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  // Function to generate a random subscription status
+  String getRandomSubscriptionStatus() {
+    final random = Random();
+    final statuses = ['Active', 'Inactive', 'Pending', 'Cancelled'];
+    return statuses[random.nextInt(statuses.length)];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile Page'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.grey[300], 
+                      child: Icon(
+                        Icons.person,
+                        size: 60,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 20), 
+                    Text(
+                      'Your Name Here',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 40), 
+              Text(
+                'Personal',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10), 
+              Text(
+                'Email: ahmedemadmonsef01@gmail.com',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Phone Number: +1-234-567-8901',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(height: 40), 
+              Text(
+                'Subscription',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10), 
+              Text(
+                'Status: ${getRandomSubscriptionStatus()}',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(height: 40), 
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      
+                    },
+                    child: Text('View My Listings'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      
+                    },
+                    child: Text('Delete My Account'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
